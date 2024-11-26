@@ -34,7 +34,10 @@ function pasaloadSection() {
     let balance = parseFloat(balanceElement.value);
     const mobile = document.getElementById("mobile").value;
     const amount2 = parseFloat(document.getElementById("amount2").value);
-
+    if (mobile === "") {
+      alert("Please enter a valid mobile number");
+      return;
+    }
     if (isNaN(amount2) || amount2 === 0) {
       alert("Please input a valid Amount");
       return;
