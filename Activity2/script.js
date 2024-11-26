@@ -13,8 +13,6 @@ function addBalanceSection() {
   addButton.addEventListener("click", function () {
     const balance = document.getElementById("balance");
     const amount1 = document.getElementById("amount1").value;
-
-    // Validate the input amount
     if (amount1 === "" || isNaN(amount1) || parseFloat(amount1) <= 0) {
       alert("Please enter a valid amount");
       return;
