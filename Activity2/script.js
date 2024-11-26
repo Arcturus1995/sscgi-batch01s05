@@ -17,12 +17,14 @@ function addBalanceSection() {
 
     const myModal = bootstrap.Modal.getInstance(addBalanceModal);
     myModal.hide();
+    balance.value += parseFloat(amount1);
+
 
     if (amount1 === "" || amount1 == 0) {
       alert("Please enter a valid amount");
       return;
     } else {
-      balance.value += parseFloat(amount1);
+      aler("Successfully Added") ;
     }
   });
 }
