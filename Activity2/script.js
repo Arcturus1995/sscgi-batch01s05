@@ -22,7 +22,7 @@ function addBalanceSection() {
       alert("Please enter a valid amount");
       return;
     } else {
-      balance.value = parseFloat(amount1);
+      balance.value += parseFloat(amount1);
     }
   });
 }
