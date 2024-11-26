@@ -54,7 +54,7 @@ function pasaloadSection() {
       )}`;
       addTransactionToHistory(transaction);
     } else {
-      alert("Transaction failed!");
+      alert("Insufficient balance");
     }
   });
 }
