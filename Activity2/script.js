@@ -9,8 +9,6 @@ addAmount.addEventListener("click", function () {
   var myModal = new bootstrap.Modal(addBalanceModal);
   myModal.show();
 });
-
-function addBalanceSection() {
 function addBalanceSection() {
   addButton.addEventListener("click", function () {
     const balance = document.getElementById("balance");
