@@ -11,24 +11,25 @@ addAmount.addEventListener("click", function () {
 });
 
 function addBalanceSection() {
+function addBalanceSection() {
   addButton.addEventListener("click", function () {
     const balance = document.getElementById("balance");
     const amount1 = document.getElementById("amount1").value;
 
-    const myModal = bootstrap.Modal.getInstance(addBalanceModal);
-    myModal.hide();
-    balance.value = parseFloat(amount1);
-
-
-
-    if (amount1 === "" || amount1 == 0) {
+    // Validate the input amount
+    if (amount1 === "" || isNaN(amount1) || parseFloat(amount1) <= 0) {
       alert("Please enter a valid amount");
       return;
-    } else {
-      aler("Successfully Added") ;
     }
+    const myModal = bootstrap.Modal.getInstance(addBalanceModal);
+    myModal.hide();
+    const currentBalance = parseFloat(balance.value) || 0;
+    const newBalance = currentBalance + parseFloat(amount1);
+    balance.value = newBalance.toFixed(2);
+    alert("Successfully Added");
   });
 }
+
 addBalanceSection();
 
 function pasaloadSection() {
