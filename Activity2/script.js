@@ -17,7 +17,8 @@ function addBalanceSection() {
 
     const myModal = bootstrap.Modal.getInstance(addBalanceModal);
     myModal.hide();
-    balance.value + parseFloat(amount1);
+   const balances = parseFloat(balance.Value) + parseFloat(amount1);
+    balance.Value = balances
 
 
     if (amount1 === "" || amount1 == 0) {
