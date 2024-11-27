@@ -1,3 +1,7 @@
+body {
+  background: linear-gradient(to right, #b2f1e5, #b2d8d0);
+}
+
 .card {
   margin: 5% auto;
   padding: 20px;
@@ -7,6 +11,6 @@
   height: 500px;
   text-align: center;
   justify-content: center;
-  background-color: rgb(47, 49, 56);
+  background: linear-gradient(to right, #267871, #2c3e50);
   color: white;
 }
