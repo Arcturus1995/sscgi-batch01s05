@@ -4,6 +4,76 @@ const mobileNumber = document.querySelectorAll("mobile");
 const btnLoad = document.getElementById("btnLoad");
 const addAmount = document.getElementById("addAmount");
 const addBalanceModal = document.getElementById("addBalanceModal"); // modal container
+const verification = document.getElementById("verify");
+
+function logout() {
+  const passLoadForm = document.getElementById("passLoadForm1");
+  const login = document.getElementById("login");
+
+  const logoutButton = document.getElementById("logout1");
+
+  logoutButton.addEventListener("click", function () {
+    if (passLoadForm && login) {
+      passLoadForm.style.display = "none";
+      login.style.display = "block";
+    } else {
+      console.error("Required elements not found in the DOM.");
+    }
+  });
+}
+
+function logIn() {
+  const submit = document.getElementById("submit");
+  if (submit) {
+    submit.addEventListener("click", function () {
+      let username = document.getElementById("username").value.trim();
+      let password = document.getElementById("password").value.trim();
+      const passLoadForm = document.getElementById("passLoadForm1");
+      const login = document.getElementById("login");
+
+      const form = document.getElementById("loginForm");
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => console.log(data));
+
+      if (username === "" || password === "") {
+        alert("Please enter both username and password");
+      } else {
+        if (username === "admin" && password === "admin") {
+          if (passLoadForm && login) {
+            login.style.display = "none";
+            passLoadForm.style.display = "block";
+          } else {
+            console.error("Required elements not found in the DOM.");
+          }
+        } else {
+          alert("Invalid username or password");
+        }
+      }
+    });
+  }
+}
+
+logIn();
+logout();
+function verificationAdmin() {
+  const verify1 = document.getElementById("verify1").value.trim();
+  const verify2 = "admin";
+
+  if (verify1 !== verify2 || verify1 === "") {
+    alert("Invalid verification code");
+  } else if (verify1 === verify2) {
+    const amount1 = document.getElementById("amount1");
+    amount1.disabled = false;
+    alert("Verification successful! You can now enter the amount.");
+    document.getElementById("verify1").value = "";
+  }
+}
+document.getElementById("verify").addEventListener("click", verificationAdmin);
 
 addAmount.addEventListener("click", function () {
   var myModal = new bootstrap.Modal(addBalanceModal);
@@ -13,19 +83,32 @@ addAmount.addEventListener("click", function () {
 function addBalanceSection() {
   addButton.addEventListener("click", function () {
     const balance = document.getElementById("balance");
-    const amount1 = document.getElementById("amount1").value;
-
-    const myModal = bootstrap.Modal.getInstance(addBalanceModal);
-    myModal.hide();
-
-    if (amount1 === "" || amount1 == 0) {
+    const amount1 = document.getElementById("amount1");
+    const amount1Value = amount1.value;
+    if (
+      amount1Value === "" ||
+      isNaN(amount1Value) ||
+      parseFloat(amount1Value) <= 0
+    ) {
       alert("Please enter a valid amount");
       return;
-    } else {
-      balance.value = parseFloat(amount1);
     }
+    const myModal = bootstrap.Modal.getInstance(addBalanceModal);
+    myModal.hide();
+    const currentBalance = parseFloat(balance.value) || 0;
+    const newBalance = currentBalance + parseFloat(amount1Value);
+    balance.value = newBalance.toFixed(2);
+    alert("Successfully Added");
+
+    const transaction = `Successfully added ${amount1Value} to balance. New balance: ${newBalance.toFixed(
+      2
+    )}`;
+    addTransactionToHistory(transaction);
+    amount1.disabled = true;
+    amount1 = document.getElementById("amount1").value = "";
   });
 }
+
 addBalanceSection();
 
 function pasaloadSection() {
@@ -59,6 +142,8 @@ function pasaloadSection() {
     } else {
       alert("Insufficient balance");
     }
+    document.getElementById("mobile").value = "";
+    document.getElementById("amount2").value = "";
   });
 }
 pasaloadSection();
