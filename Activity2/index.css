@@ -4,13 +4,22 @@ body {
 
 .card {
   margin: 5% auto;
-  padding: 20px;
+  padding: 0 20px;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 500px;
   height: 500px;
-  text-align: center;
   justify-content: center;
   background: linear-gradient(to right, #267871, #2c3e50);
   color: white;
+}
+.loginUser {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  height: 450px;
+  width: 350px;
+}
+.loginUser .userLabel {
+  padding-left: 0;
 }

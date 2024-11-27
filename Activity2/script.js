@@ -16,11 +16,13 @@ function logout() {
     if (passLoadForm && login) {
       passLoadForm.style.display = "none";
       login.style.display = "block";
+      login.style.paddingTop = "70px";
     } else {
       console.error("Required elements not found in the DOM.");
     }
   });
 }
+logout();
 
 function logIn() {
   const submit = document.getElementById("submit");
@@ -59,7 +61,7 @@ function logIn() {
 }
 
 logIn();
-logout();
+
 function verificationAdmin() {
   const verify1 = document.getElementById("verify1").value.trim();
   const verify2 = "admin";
@@ -157,3 +159,5 @@ function addTransactionToHistory(transaction) {
   listItem.textContent = transaction;
   historyList.appendChild(listItem);
 }
+
+let user = {};

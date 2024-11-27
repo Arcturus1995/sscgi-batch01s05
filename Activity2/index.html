@@ -18,11 +18,14 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="card shadow" id="login">
+    <div class="card shadow loginUser" id="login">
+      <div>
+        <h1 class="text-center">Pasa Load</h1>
+      </div>
       <h1 class="text-center mb-4">Login</h1>
       <form id="loginForm">
         <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
+          <label for="username" class="form-label userLabel">Username</label>
           <input
             type="text"
             class="form-control"
@@ -34,7 +37,7 @@
           />
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+          <label for="password" class="form-label userLabel">Password</label>
           <input
             type="password"
             class="form-control"
@@ -46,13 +49,17 @@
           />
         </div>
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-primary" id="submit">
+          <button type="button" class="btn btn-primary w-100" id="submit">
             Login
           </button>
         </div>
       </form>
     </div>
-    <div class="passLoadForm" id="passLoadForm1" style="display: none">
+    <div
+      class="passLoadForm shadow-lg p-3 mb-5 bg-body-tertiary rounded container mt-3 w-50 p-3"
+      id="passLoadForm1"
+      style="display: none"
+    >
       <header class="container mt-3 text-center d-flex">
         <div>
           <button type="button" id="addAmount" class="btn btn-primary">
@@ -134,7 +141,9 @@
           <h2>Pasaload</h2>
           <div class="content">
             <div class="view-balance mb-3">
-              <label for="balance" class="form-label">Balance</label>
+              <label for="balance" class="form-label">
+                Remaining Balances</label
+              >
               <input
                 type="text"
                 id="balance"
